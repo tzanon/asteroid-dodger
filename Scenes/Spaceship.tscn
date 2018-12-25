@@ -10,13 +10,14 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 40 )
 
-[node name="Spaceship" type="KinematicBody2D"]
+[node name="Spaceship" type="KinematicBody2D" index="0"]
 
 input_pickable = false
-collision_layer = 1
+collision_layer = 0
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
 speed = 300.0
 p1_sprite = ExtResource( 2 )
 p2_sprite = ExtResource( 3 )

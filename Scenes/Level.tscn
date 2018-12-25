@@ -1,21 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Level.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Spaceship.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sprites/purple_space1.jpg" type="Texture" id=3]
-[ext_resource path="res://Sprites/weapon_marker.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Asteroid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/purple_space1.jpg" type="Texture" id=4]
+[ext_resource path="res://Sprites/weapon_marker.png" type="Texture" id=5]
 
 [node name="Level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 two_player = true
 player_scene = ExtResource( 2 )
-asteroid_scene = null
+asteroid_scene = ExtResource( 3 )
+spawn_interval = 1.1
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
 position = Vector2( 432, 304 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
@@ -31,49 +33,49 @@ __meta__ = {
 [node name="Spawner1" type="Sprite" parent="Spawners" index="0"]
 
 position = Vector2( 64, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner2" type="Sprite" parent="Spawners" index="1"]
 
 position = Vector2( 160, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner3" type="Sprite" parent="Spawners" index="2"]
 
 position = Vector2( 352, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner4" type="Sprite" parent="Spawners" index="3"]
 
 position = Vector2( 544, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner5" type="Sprite" parent="Spawners" index="4"]
 
 position = Vector2( 736, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner6" type="Sprite" parent="Spawners" index="5"]
 
 position = Vector2( 256, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner7" type="Sprite" parent="Spawners" index="6"]
 
 position = Vector2( 448, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Spawner8" type="Sprite" parent="Spawners" index="7"]
 
 position = Vector2( 640, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Players" type="Node2D" parent="." index="2"]
@@ -81,5 +83,12 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="SpawnTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
 
 
