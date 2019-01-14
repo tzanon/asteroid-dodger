@@ -59,6 +59,8 @@ func _spawn_asteroid():
 	var spawner_idx = randi() % asteroid_spawners.size()
 	var spawner = asteroid_spawners[spawner_idx]
 	
-	
+	var asteroid = asteroid_scene.instance()
+	asteroid.position = spawner.global_position
+	get_node("Asteroids").add_child(asteroid)
 	
 

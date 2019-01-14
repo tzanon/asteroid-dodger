@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 export(float) var speed = 300.0
 
@@ -18,7 +18,4 @@ func set_player_num(num):
 		ShuttleSprite.texture = p1_sprite
 	else:
 		ShuttleSprite.texture = p2_sprite
-
-
-
 
