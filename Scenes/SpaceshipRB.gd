@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 export var debug_mode = false
 
-export(float) var speed = 300
+export(float) var speed = 300.0
 var number setget set_num
 var move_left_action = ""
 var move_right_action = ""
@@ -28,39 +28,23 @@ func _ready():
 	ShuttleSprite = get_node("Sprite")
 
 func _physics_process(delta):
+# warning-ignore:unused_variable
+	var coll
 	if Input.is_action_pressed(move_left_action):
-		_move(-speed * delta, 0)
-		#_slide(-speed, 0)
+		self.position.x -= speed * delta
 	if Input.is_action_pressed(move_right_action):
-		_move(speed * delta, 0)
-		#_slide(speed, 0)
+		self.position.x += speed * delta
 	if Input.is_action_pressed(move_up_action):
-		_move(0, -speed * delta)
-		#_slide(0, -speed)
+		self.position.y -= speed * delta
 	if Input.is_action_pressed(move_down_action):
-		_move(0, speed * delta)
-		#_slide(0, speed)
+		self.position.y += speed * delta
 	
-
-func _move(x_amount, y_amount):
-	var move_vec = Vector2(x_amount, y_amount)
-	var coll = self.move_and_collide(move_vec, false)
-	if coll:
+	var bodies = get_colliding_bodies()
+	if bodies:
 		if debug_mode:
 			print("spaceship hit something")
 		#self.destroy()
 	
-
-func _slide(x_amount, y_amount):
-	var move_vec = Vector2(x_amount, y_amount)
-# warning-ignore:return_value_discarded
-	self.move_and_slide(move_vec)
-	if is_on_wall():
-		print("spaceship 'on wall'")
-	if is_on_ceiling():
-		print("spaceship 'on ceiling'")
-	if is_on_floor():
-		print("spaceship 'on floor'")
 	
 
 func set_num(num):
@@ -76,4 +60,3 @@ func set_num(num):
 
 func destroy():
 	self.queue_free()
-

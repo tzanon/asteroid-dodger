@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Spaceship.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/SpaceshipRB.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/generic-shuttle.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/green-shuttle.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/red-shuttle.png" type="Texture" id=4]
@@ -8,10 +8,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 40 )
 
-[node name="Spaceship" type="KinematicBody2D" groups=[
+[node name="RigidBody2D" type="RigidBody2D" groups=[
 "Spaceship",
 ]]
-collision_mask = 0
+mode = 3
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
